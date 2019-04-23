@@ -6,6 +6,8 @@
         <p><%= listing.title %></p>
         <p><%= listing.description %></p>
         <p><%= listing.breed.name %></p>
-        <%= link_to "edit", edit_listing_path(listing.id) %>
+        <% if user_signed_in? && listing.user_id == current_user.id %>
+            <p><%= link_to "edit", edit_listing_path(listing.id) %></p>
+        <% end %>
     </div>
 <% end %>
